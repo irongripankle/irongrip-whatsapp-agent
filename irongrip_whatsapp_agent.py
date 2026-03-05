@@ -6,7 +6,7 @@ Captura reservas con S/10 de pre-venta
 Guarda datos en CSV para exportar a Google Sheet
 """
 
-from flask import Flask, request
+from flask import Flask, request, Response
 from twilio.rest import Client
 import os
 import json
@@ -243,7 +243,7 @@ def whatsapp_webhook():
                 "timestamp": datetime.now().isoformat()
             }) + "\n")
         
-        return ("", 200)
+       return Response("", status=200)
     
     except Exception as e:
         print(f"Error en webhook: {e}")
